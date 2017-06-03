@@ -129,6 +129,9 @@
     <Compile Include="Assets\Scripts\Controllers\PanelController.cs" />
     <Compile Include="Assets\Scripts\Controllers\MenuController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\Commands\AutoPlayCards.cs" />
+    <Compile Include="Assets\Scripts\Controllers\FinishController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\HistoryController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

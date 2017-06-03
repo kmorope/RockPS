@@ -12,11 +12,17 @@ public class Card:MonoBehaviour
         Tijera = 3
     }
 
-	private CardTypes _type;
+	public CardTypes _type;
+
+    public int cardPosition;
 
 	public Card(CardTypes type)
     {
         _type = type;
+    }
+
+    public void SetCardType(CardTypes type){
+        this._type = type;
     }
 
     public CardTypes GetCardType()
@@ -24,12 +30,27 @@ public class Card:MonoBehaviour
         return _type;
     }
 
+    public void PlayCard(){
+        GameController.instance.ClearCardsState();
+        GameController.instance.selectedCard = this.cardPosition+1;
+        PlayCard pl = new PlayCard();
+        pl.player = GameController.instance.GetPlayer(Player.PlayerType.Human);
+        pl.card = this;
+        pl.Execute();
+        GameController.instance.SaveCommand(pl);
+    }
+
+    public void SelectCard(){
+        
+    }
+
     public void SwitchCard(bool open){
         var rt = this.gameObject.GetComponent(typeof(RectTransform)) as RectTransform;
-        rt.sizeDelta = open ? new Vector2(122, 137) : new Vector2(89, 100);
-        var image = this.gameObject.GetComponent(typeof(Image)) as Image; 
+        rt.sizeDelta = open ? new Vector2(90, 100) : new Vector2(80, 90);
+        var image = this.gameObject.GetComponent(typeof(Image)) as Image;
+        image.sprite = null;
         var cardImage = open ? _type.ToString().ToLower() : "giphy";
-        image.sprite = Resources.Load("Images/" + _type.ToString().ToLower(), typeof(Sprite)) as Sprite;
+        image.sprite = Resources.Load("Images/" + cardImage, typeof(Sprite)) as Sprite;
     }
 
     public void SetStatus(bool status){

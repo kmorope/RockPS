@@ -18,6 +18,10 @@ public class MenuController : MonoBehaviour
 
 	float _cooldownTime = 0.25f;
 
+    public PanelController panelConfig;
+
+	public PanelController panelHistory;
+
 
 	// Use this for initialization
 	void Start()
@@ -49,10 +53,31 @@ public class MenuController : MonoBehaviour
 			Flip(_focusedButton == 2, _historyButton);
 		}
         if(Input.GetKey("joystick button 16")){
+            DisableListening();
             if (_focusedButton == 1){
                 ChangeScene();
             }
+			if (_focusedButton == 2)
+			{
+				OpenHistory();
+			}
+			if (_focusedButton == 3)
+			{
+				OpenSettings();
+			}
         }
+		if (Input.GetKey("joystick button 17"))
+		{
+            DisableListening();
+			if (_focusedButton == 2)
+			{
+				CloseHistory();
+			}
+			if (_focusedButton == 3)
+			{
+				CloseSettings();
+			}
+		}
 	}
 
 	public void Flip(bool open,Button btn)
@@ -75,4 +100,24 @@ public class MenuController : MonoBehaviour
     public void ChangeScene(){
         SceneLoader.instance.LoadScene("Game");
     }
+
+    public void OpenSettings(){
+        panelConfig.ShowPanel();
+    }
+
+	public void OpenHistory()
+	{
+        panelHistory.GetComponent<HistoryController>().LoadVictorias();
+		panelHistory.ShowPanel();
+	}
+
+	public void CloseSettings()
+	{
+		panelConfig.HidePanel();
+	}
+
+	public void CloseHistory()
+	{
+		panelHistory.HidePanel();
+	}
 }

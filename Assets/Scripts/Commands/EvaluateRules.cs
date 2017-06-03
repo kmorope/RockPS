@@ -22,10 +22,12 @@
 			if (cardTwoType == Card.CardTypes.Tijera)
 			{
                 //Gana 1
+                GameController.instance.playerOne.SetPoints(1);
 			}
 			else if (cardTwoType == Card.CardTypes.Papel)
 			{
 				//Gana 2
+                GameController.instance.playerTwo.SetPoints(1);
 			}
 		}
         //Caso Papel
@@ -34,10 +36,12 @@
 			if (cardTwoType == Card.CardTypes.Piedra)
 			{
 				//Gana 1
+                GameController.instance.playerOne.SetPoints(1);
 			}
 			else if (cardTwoType == Card.CardTypes.Tijera)
 			{
 				//Gana 2
+                GameController.instance.playerTwo.SetPoints(1);
 			}
 		}
         //Caso Tijera
@@ -46,11 +50,14 @@
 			if (cardTwoType == Card.CardTypes.Papel)
 			{
 				//Gana 1
+                GameController.instance.playerOne.SetPoints(1);
 			}
 			else if (cardTwoType == Card.CardTypes.Piedra)
 			{
 				//Gana 2
+                GameController.instance.playerTwo.SetPoints(1);
 			}
 		}
+
 	} 
 }
