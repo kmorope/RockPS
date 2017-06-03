@@ -3,7 +3,9 @@ using System.Collections;
 
 public class XBOXInputController : MonoBehaviour
 {
-	
+
+    public XBOXInputController instance;
+
     public enum ControlType{
         game,menu
     }
@@ -19,7 +21,7 @@ public class XBOXInputController : MonoBehaviour
     // Use this for initialization
 	void Start()
 	{
-
+        instance = this;
 	}
 
 	// Update is called once per frame
@@ -30,16 +32,27 @@ public class XBOXInputController : MonoBehaviour
 				if (Input.GetAxis("JAxisX") > _umbral && _isListening)
 				{
 					DisableListening();
-					Debug.Log(Input.GetButton("JAxisX Positive"));
+					Debug.Log(Input.GetButton("JAxisX"));
 				}
 
 				if (Input.GetAxis("JAxisX") < (_umbral * -1) && _isListening)
 				{
 					DisableListening();
-					Debug.Log(Input.GetButton("JAxisX Negative"));
+					Debug.Log(Input.GetButton("JAxisX"));
 				}
                 break;
 			case ControlType.menu:
+				if (Input.GetAxis("JAxisX") > _umbral && _isListening)
+				{
+					DisableListening();
+					Debug.Log(Input.GetButton("JAxisX"));
+				}
+
+				if (Input.GetAxis("JAxisX") < (_umbral * -1) && _isListening)
+				{
+					DisableListening();
+					Debug.Log(Input.GetButton("JAxisX"));
+				}
                 break;
             default:
                 break;

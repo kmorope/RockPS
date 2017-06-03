@@ -7,9 +7,7 @@ public class GameController : MonoBehaviour
     static public GameController instance;
 
     int frameCount = 0;
-
-    Command dealCards;
-
+ 
     Command playCards = new PlayCard();
 
     Command evaluateRules = new EvaluateRules();
