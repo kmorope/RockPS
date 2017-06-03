@@ -31,29 +31,34 @@ public class MenuController : MonoBehaviour
 	{
 		if (Input.GetAxis("JAxisY") > _umbral && _isListening)
 		{
-            if (_focusedButton < 3)
-                _focusedButton++;
-			DisableListening();
-			Flip(_focusedButton == 1, _playButton);
-            Flip(_focusedButton == 2, _settingsButton);
-            Flip(_focusedButton == 3, _historyButton);
-		}
-
-		if (Input.GetAxis("JAxisY") < (_umbral * -1) && _isListening)
-		{
             if (_focusedButton > 1)
                 _focusedButton--;
 			DisableListening();
 			Flip(_focusedButton == 1, _playButton);
-			Flip(_focusedButton == 2, _settingsButton);
-			Flip(_focusedButton == 3, _historyButton);
+            Flip(_focusedButton == 3, _settingsButton);
+            Flip(_focusedButton == 2, _historyButton);
 		}
+
+		if (Input.GetAxis("JAxisY") < (_umbral * -1) && _isListening)
+		{
+            if (_focusedButton < 3)
+                _focusedButton++;
+			DisableListening();
+			Flip(_focusedButton == 1, _playButton);
+			Flip(_focusedButton == 3, _settingsButton);
+			Flip(_focusedButton == 2, _historyButton);
+		}
+        if(Input.GetKey("joystick button 16")){
+            if (_focusedButton == 1){
+                ChangeScene();
+            }
+        }
 	}
 
 	public void Flip(bool open,Button btn)
 	{
 		var rt = btn.gameObject.GetComponent(typeof(RectTransform)) as RectTransform;
-		rt.sizeDelta = open ? new Vector2(280, 280) : new Vector2(200, 200); 
+		rt.sizeDelta = open ? new Vector2(160, 160) : new Vector2(100, 100); 
 	}
 
 	private void DisableListening()
@@ -66,4 +71,8 @@ public class MenuController : MonoBehaviour
 	{
 		_isListening = true;
 	}
+
+    public void ChangeScene(){
+        SceneLoader.instance.LoadScene("Game");
+    }
 }

@@ -128,6 +128,7 @@
     <Compile Include="Assets\Scripts\Controllers\SoundController.cs" />
     <Compile Include="Assets\Scripts\Controllers\PanelController.cs" />
     <Compile Include="Assets\Scripts\Controllers\MenuController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SceneLoader.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
