@@ -25,7 +25,7 @@ public class XBOXInputController : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update()
+	public void ControllUpdate()
 	{
         switch(_controlType){
             case ControlType.game:
